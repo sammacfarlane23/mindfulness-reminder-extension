@@ -1,37 +1,54 @@
-let timeLeft = 20 * 60;
 let isTimerActive = false;
-const startButton = document.getElementById('ring');
+const startButton = document.getElementById('start');
+const stopButton = document.getElementById('stop');
 const timer = document.getElementById('timer');
+const intervalInput = document.getElementById('interval');
+const intervalForm = document.getElementById('interval-form');
+const progressIndicator = document.getElementById('progress-indicator');
+
+intervalForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    startTimer(parseInt(intervalInput.value * 60), true);
+});
+
+stopButton.addEventListener('click', () => {
+    stopTimer();
+});
+
 let interval;
 
-const startTimer = () => {
-    startButton.innerText = 'Stop';
-    timer.innerText = timeLeft + " seconds remaining";
+const startTimer = (time) => {
+    let timeLeft = time;
+    progressIndicator.style.width = '100%';
+    startButton.disabled = true;
+    timer.innerText = (timeLeft) / 60 + ":00";
     isTimerActive = true;
     interval = setInterval(() => {
-        if (timeLeft <= 0) {
+        if (timeLeft <= 1) {
             clearInterval(interval);
-            timeLeft = 20;
             timer.innerText = "Time is up!";
+            const audio = new Audio('./gong-91013.mp3');
+            audio.play();
+            progressIndicator.style.width = '0%';
+            startTimer(time);
         } else {
             timeLeft -= 1;
+            progressIndicator.style.width = `${(timeLeft) / time * 100}%`;
             // @TODO: Show minutes and seconds
-            timer.innerText = timeLeft + " seconds remaining";
+            timer.innerText = Math.floor(timeLeft / 60) + ":" + timeLeft % 60;
+            // timer.innerText = timeLeft + " seconds remaining";
         }
     }, 1000);
 }
 
 const stopTimer = () => {
     clearInterval(interval);
+    progressIndicator.style.width = '100%';
+    startButton.disabled = false;
     isTimerActive = false;
-    timeLeft = 20;
     timer.innerText = "Click the button to start the timer!";
-    startButton.innerText = 'Start';
 };
 
-startButton.addEventListener('click', () => {
-    // const audio = new Audio('https://www.soundjay.com/button/beep-07.wav');
-    // audio.play();
-    isTimerActive ? stopTimer() : startTimer();
-});
+
+
 

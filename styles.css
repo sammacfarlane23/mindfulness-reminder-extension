@@ -1,8 +1,63 @@
 body {
     width: 20rem;
+    background-color: #4F5165;
+    color: #E8E9EB;
 }
 
 h1 {
     font-size: 2rem;
-    color: navy;
+}
+
+hr {
+    margin: 1rem 0;
+    border: 1px solid #9C9DA8;
+
+}
+
+
+.interval {
+    width: 4rem;
+    font-size: 2rem;
+    background-color: #4F5165;
+    border: none;
+    color: #E8E9EB;
+}
+
+.buttons {
+        margin-top: 1rem;
+}
+
+button {
+            outline: none;
+            background-color: #08A4BD;
+            border: none;
+            color: #E8E9EB;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+}
+
+.progress-container {
+    background-color: #E8E9EB;
+    padding: 0.5rem;
+    position: relative;
+    height: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.timer {
+    color: black;
+    position: relative;
+    z-index: 2;
+}
+
+.progress-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #08A4BD;
+    height: 100%;
+    border-radius: 4px;
 }

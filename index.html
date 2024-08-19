@@ -1,13 +1,29 @@
 <html>
-    <head>
+
+<head>
   <link rel="stylesheet" href="styles.css">
 </head>
-  <body>
-    <h1>The Mindfulness Extension</h1>
-    <p>This extension has been built to bring you more mindfulness as you go about your virtual workday.</p>
-    <p>Click the button below to ring a bell that reminds you to take some conscious breaths every once in a while.</p>
-    <button id="ring">Start</button>
-    <span id="timer">Click the button to start the timer</span>
-    <script src="index.js"></script>
-  </body>
+
+<body>
+  <h1>The Mindfulness Extension</h1>
+  <p>This extension has been built to bring you more mindfulness as you go about your virtual workday.</p>
+  <p>Click the button below to ring a bell that reminds you to take some conscious breaths every once in a while.</p>
+  <hr>
+  <!-- @TODO: Make form a bit nicer -->
+  <form id="interval-form">
+    <label for="interval">Remind me every</label>
+    <input type="number" id="interval" class="interval" value="15">
+    <span>minutes</span>
+    <div class="buttons">
+      <button id="start">Start</button>
+      <button id="stop" type="button">Stop</button>
+    </div>
+  </form>
+  <div class="progress-container">
+    <span id="timer" class="timer">Click the button to start the timer</span>
+    <div id="progress-indicator" class="progress-indicator" />
+  </div>
+  <script src="index.js"></script>
+</body>
+
 </html>
