@@ -37,27 +37,26 @@ button {
             margin-right: 8px;
 }
 
-.progress-container {
-    background-color: #E8E9EB;
-    padding: 0.5rem;
-    position: relative;
-    height: 1rem;
-    border-radius: 4px;
-    margin-top: 1rem;
-    text-align: center;
+.item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 }
-
 .timer {
-    color: black;
-    position: relative;
-    z-index: 2;
+	width: 160px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.progress-indicator {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #08A4BD;
-    height: 100%;
-    border-radius: 4px;
+svg {
+	transform: rotate(-90deg);
+}
+
+.circle_animation {
+	stroke-dasharray: 440; /* this value is the pixel circumference of the circle */
+	stroke-dashoffset: 0;
+	transition: all 1s linear;
 }

@@ -1,10 +1,12 @@
+// @TODO: Need to move all of this into a background script so it can run in the background
+// Will then need it to communicate with this script to update the UI
 let isTimerActive = false;
 const startButton = document.getElementById('start');
 const stopButton = document.getElementById('stop');
 const timer = document.getElementById('timer');
 const intervalInput = document.getElementById('interval');
 const intervalForm = document.getElementById('interval-form');
-const progressIndicator = document.getElementById('progress-indicator');
+let circle = document.querySelector( '.circle_animation' ).style;
 
 intervalForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -15,11 +17,11 @@ stopButton.addEventListener('click', () => {
     stopTimer();
 });
 
-let interval;
-
 const startTimer = (time) => {
+    let finalOffset = 440;// the length of strokedasharray ( pixel circumference of the circle -> css )
+    let step = finalOffset/time;
+    circle.strokeDashoffset = 0;
     let timeLeft = time;
-    progressIndicator.style.width = '100%';
     startButton.disabled = true;
     timer.innerText = (timeLeft) / 60 + ":00";
     isTimerActive = true;
@@ -29,24 +31,20 @@ const startTimer = (time) => {
             timer.innerText = "Time is up!";
             const audio = new Audio('./gong-91013.mp3');
             audio.play();
-            progressIndicator.style.width = '0%';
             startTimer(time);
         } else {
             timeLeft -= 1;
-            progressIndicator.style.width = `${(timeLeft) / time * 100}%`;
-            // @TODO: Show minutes and seconds
+            circle.strokeDashoffset = step * (time - timeLeft);
             timer.innerText = Math.floor(timeLeft / 60) + ":" + timeLeft % 60;
-            // timer.innerText = timeLeft + " seconds remaining";
         }
     }, 1000);
 }
 
 const stopTimer = () => {
     clearInterval(interval);
-    progressIndicator.style.width = '100%';
     startButton.disabled = false;
     isTimerActive = false;
-    timer.innerText = "Click the button to start the timer!";
+    timer.innerText = "Click start!";
 };
 
 
