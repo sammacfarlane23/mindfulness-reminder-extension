@@ -8,6 +8,17 @@ const intervalInput = document.getElementById('interval');
 const intervalForm = document.getElementById('interval-form');
 let circle = document.querySelector( '.circle_animation' ).style;
 
+const incrementButton = document.getElementById('increment');
+const decrementButton = document.getElementById('decrement');
+
+incrementButton.addEventListener('click', () => {
+    intervalInput.value = parseInt(intervalInput.value) + 5;
+});
+
+decrementButton.addEventListener('click', () => {
+    intervalInput.value = Math.max(0, parseInt(intervalInput.value) - 5);
+});
+
 intervalForm.addEventListener('submit', (e) => {
     e.preventDefault();
     startTimer(parseInt(intervalInput.value * 60), true);
