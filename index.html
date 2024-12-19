@@ -1,11 +1,16 @@
 <html>
 
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Lexend:wght@100..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-blue-950 text-gray-300 rounded-xl">
-  <div class="w-[320px] py-4 px-6">
+<body class="bg-blue-950 text-gray-300" style="font-family: Lexend">
+  <div class="w-[380px] py-6 px-8">
     <h1 class="text-lg mb-4 font-bold">The Mindfulness Extension</h1>
     <p class="mb-2 text-md">This extension has been built to bring you more mindfulness as you go about your workday.
     </p>
@@ -13,27 +18,29 @@
       in a while.</p>
     <hr class="my-4 border-gray-300">
     <!-- @TODO: Make form a bit nicer -->
+    <div class="flex justify-center items-end relative mt-6 gap-x-2">
+      <button
+        class="text-gray-300 hover:text-gray-100 bg-[#08A4BD] rounded-full w-[32px] h-[32px] text-lg font-bold hover:bg-blue-400"
+        type="button" id="decrement">-</button>
+      <div class="flex justify-center items-center">
+        <span id="timer" class="absolute flex justify-center items-center text-lg">5 minutes</span>
+        <svg width="240" height="240" xmlns="http://www.w3.org/2000/svg" class="transform -rotate-90">
+          <circle id="circle" class="circle_animation" r="104.785" cy="120" cx="120" stroke-width="12" stroke="#08A4BD"
+            fill="none" style="stroke-dasharray: 660; stroke-dashoffset: 0;" />
+        </svg>
+      </div>
+      <button
+        class="text-gray-300 hover:text-gray-100 bg-[#08A4BD] rounded-full w-[32px] h-[32px] text-lg font-bold hover:bg-blue-400"
+        type="button" id="increment">+</button>
+    </div>
     <form id="interval-form">
       <div class="flex flex-col items-end">
         <div class="flex justify-between items-center w-full mb-4">
-          <label for="interval">Number of minutes between reminders</label>
-          <input type="number" id="interval" class="bg-blue-950 text-gray-300 w-10 text-xl font-bold" value="5">
+          <input type="number" id="interval" class="bg-blue-950 text-gray-300 w-10 text-xl font-bold" hidden="true"
+            value="5">
         </div>
         <div class="flex gap-x-2 -mr-2">
-          <button
-            class="text-gray-300 hover:text-gray-100 bg-[#08A4BD] rounded-full w-[32px] h-[32px] text-lg font-bold"
-            type="button" id="decrement">-</button>
-          <button
-            class="text-gray-300 hover:text-gray-100 bg-[#08A4BD] rounded-full w-[32px] h-[32px] text-lg font-bold"
-            type="button" id="increment">+</button>
         </div>
-      </div>
-      <div class="flex justify-center items-center relative mt-8">
-        <span id="timer" class="w-10 absolute flex justify-center items-center text-xl">Click start!</span>
-        <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg" class="transform -rotate-90">
-          <circle id="circle" class="circle_animation" r="69.85699" cy="81" cx="81" stroke-width="8" stroke="#08A4BD"
-            fill="none" style="stroke-dasharray: 440; stroke-dashoffset: 0;transition: all 1s linear;" />
-        </svg>
       </div>
       <div class="mt-8 flex gap-x-4">
         <button id="start" class="outline-none px-4 py-2 border-2 rounded-md hover:bg-blue-900">Start</button>

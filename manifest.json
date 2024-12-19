@@ -1,10 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "The Mindfulness Extension 2",
+  "name": "The Mindfulness Extension",
   "description": "Base Level Extension",
   "version": "1.0",
+  "permissions": ["storage", "background"],
+   "background": {
+    "service_worker": "background.js"
+  },
   "action": {
     "default_popup": "index.html",
     "default_icon": "hello_extensions.png"
-  }
+  },
+  "host_permissions": ["<all_urls>"]
 }
