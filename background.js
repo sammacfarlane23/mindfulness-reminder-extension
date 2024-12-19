@@ -1,3 +1,4 @@
+// @TODO: Make a live updating icon that shows the time left on the timer
 let timerInterval = null;
 let timerState = {
     timeLeft: 0,

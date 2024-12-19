@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Listen for messages from the background script
 chrome.runtime.onMessage.addListener((message) => {
+    // @TODO: Add notifications for when the timer ends
     if (message.action === "timerEnded") {
         timer.innerText = "Time is up!";
         const audio = new Audio('./gong-91013.mp3');
